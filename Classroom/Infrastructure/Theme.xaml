@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Classroom">
+    <SolidColorBrush x:Key="ThemeBrush" Color="#3392d6"></SolidColorBrush>
+    <SolidColorBrush x:Key="NegativeChoiceDeep" Color="#FF9225"></SolidColorBrush>
+    <SolidColorBrush x:Key="NegativeChoiceLight" Color="#FFE2BA"></SolidColorBrush>
+
+    <ControlTemplate x:Key="ButtonControlTemplate" TargetType="Button">
+        <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                Background="{TemplateBinding Background}" 
+                SnapsToDevicePixels="True">
+            <ContentPresenter Focusable="False"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                              Margin="{TemplateBinding Margin}" 
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                              RecognizesAccessKey="True">
+
+            </ContentPresenter>
+        </Border>
+    </ControlTemplate>
+    
+</ResourceDictionary>
