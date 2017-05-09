@@ -57,8 +57,6 @@ namespace Classroom
 
                     MsgImage = "Image/msg_infomation.png";
                     break;
-
-
             }
         }
 
@@ -75,7 +73,6 @@ namespace Classroom
             get { return _msgBackgroundBrush; }
             set { SetProperty(ref _msgBackgroundBrush, value); }
         }
-
 
         private string _msgImage;
         public string MsgImage

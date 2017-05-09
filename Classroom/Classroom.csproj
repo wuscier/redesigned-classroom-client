@@ -66,23 +66,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Infrastructure\Dialog.xaml.cs">
+    <Compile Include="Infrastructure\CustomControl\Dialog.xaml.cs">
       <DependentUpon>Dialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\BaseWindow.cs" />
-    <Compile Include="MessageItem.cs" />
-    <Compile Include="MessageQueueManager.cs" />
-    <Compile Include="MessageType.cs" />
-    <Compile Include="MsgBoxView.xaml.cs">
+    <Compile Include="Infrastructure\CustomControl\BaseWindow.cs" />
+    <Compile Include="Infrastructure\Message\MessageItem.cs" />
+    <Compile Include="Infrastructure\Message\MessageQueueManager.cs" />
+    <Compile Include="Infrastructure\Message\MessageType.cs" />
+    <Compile Include="Infrastructure\CustomControl\MsgBoxView.xaml.cs">
       <DependentUpon>MsgBoxView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MsgBoxViewModel.cs" />
+    <Compile Include="Infrastructure\CustomControl\MsgBoxViewModel.cs" />
     <Compile Include="SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
-    <Page Include="Infrastructure\Dialog.xaml">
+    <Page Include="Infrastructure\CustomControl\Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,7 +98,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MsgBoxView.xaml">
+    <Page Include="Infrastructure\CustomControl\MsgBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,5 +225,6 @@
     <Resource Include="Image\yq_tk_background.png" />
     <Resource Include="Image\yq_tk_hover.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
