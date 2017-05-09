@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -17,9 +18,21 @@ namespace Classroom
         {
             base.OnStartup(e);
 
-            Dialog baseWindow = new Dialog("你好，suppeman！你好，supper man！你好，supper man！", "谢谢","不用了");
+            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-            baseWindow.ShowDialog();
+            MessageQueueManager.Instance.AddInfo("INFO");
+
+
+
+            //MessageQueueManager.Instance.AddWarning("WARNING");
+            //MessageQueueManager.Instance.AddError("ERROR");
+
+            //Thread.Sleep(4000);
+
+            //MessageQueueManager.Instance.AddInfo("INFO");
+            //MessageQueueManager.Instance.AddWarning("WARNING");
+            //MessageQueueManager.Instance.AddError("ERROR");
+
         }
     }
 }

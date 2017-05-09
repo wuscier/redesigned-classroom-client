@@ -8,6 +8,7 @@
                   Height="500" Width="800"
                   IsSubWindow="True"
                   FontSize="50"
+                  FontFamily="Microsoft Yahei"
                   >
     
     <Grid Button.Click="ChoiceButton_OnClick">

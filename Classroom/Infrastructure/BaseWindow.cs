@@ -16,7 +16,6 @@ namespace Classroom
 
         private void BaseWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine(e.Key.ToString());
             switch (e.Key)
             {
                 case Key.Escape:
@@ -66,6 +65,7 @@ namespace Classroom
         {
             SetCommonWindowStyle();
 
+            ShowInTaskbar = false;
             IgnoreTaskbarOnMaximize = false;
             WindowState = WindowState.Normal;
         }
