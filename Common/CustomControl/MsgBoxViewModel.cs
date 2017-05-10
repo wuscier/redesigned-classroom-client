@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using Common.Message;
 using Prism.Mvvm;
 
-namespace Classroom
+namespace Common.CustomControl
 {
     public class MsgBoxViewModel : BindableBase
     {
@@ -25,7 +22,7 @@ namespace Classroom
                     var errorBackgroundString = ColorConverter.ConvertFromString("#fff2f2");
                     if (errorBackgroundString != null)
                         MsgBackgroundBrush = new SolidColorBrush((Color)errorBackgroundString);
-                    MsgImage = "Image/msg_error.png";
+                    MsgImage = "../Image/msg_error.png";
                     break;
 
                 case MessageType.Warning:
@@ -37,7 +34,7 @@ namespace Classroom
                     if (warningBackgroundString != null)
                         MsgBackgroundBrush = new SolidColorBrush((Color)warningBackgroundString);
 
-                    MsgImage = "Image/msg_warning.png";
+                    MsgImage = "../Image/msg_warning.png";
                     break;
                 case MessageType.Info:
                     var themeDictionary =
@@ -55,7 +52,7 @@ namespace Classroom
                     if (infoBackgroundString != null)
                         MsgBackgroundBrush = new SolidColorBrush((Color)infoBackgroundString);
 
-                    MsgImage = "Image/msg_infomation.png";
+                    MsgImage = "../Image/msg_infomation.png";
                     break;
             }
         }

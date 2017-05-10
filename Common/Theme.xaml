@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Classroom">
+                    >
     <SolidColorBrush x:Key="ThemeBrush" Color="#3392d6"></SolidColorBrush>
     <SolidColorBrush x:Key="NegativeChoiceDeep" Color="#FF9225"></SolidColorBrush>
     <SolidColorBrush x:Key="NegativeChoiceLight" Color="#FFE2BA"></SolidColorBrush>

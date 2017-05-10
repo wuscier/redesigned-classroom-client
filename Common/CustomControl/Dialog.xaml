@@ -1,15 +1,18 @@
-﻿<local:BaseWindow x:Class="Classroom.Dialog"
+﻿<customControl:BaseWindow x:Class="Common.CustomControl.Dialog"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:local="clr-namespace:Classroom"
+                  xmlns:customControl="clr-namespace:Common.CustomControl"
                   mc:Ignorable="d"
                   Height="500" Width="800"
                   IsSubWindow="True"
                   FontSize="50"
                   FontFamily="Microsoft Yahei"
                   >
+    <customControl:BaseWindow.Resources>
+        <ResourceDictionary Source="../Theme.xaml"></ResourceDictionary>
+    </customControl:BaseWindow.Resources>
     
     <Grid Button.Click="ChoiceButton_OnClick">
         <Grid.RowDefinitions>
@@ -72,4 +75,5 @@
             </Button.Style>
         </Button>
     </Grid>
-</local:BaseWindow>
+</customControl:BaseWindow>
+
