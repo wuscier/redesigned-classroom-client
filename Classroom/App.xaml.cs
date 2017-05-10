@@ -12,7 +12,6 @@ namespace Classroom
         {
             base.OnStartup(e);
 
-            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
             MessageQueueManager.Instance.AddInfo("INFO");
 
