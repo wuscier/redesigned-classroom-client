@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Classroom
+namespace Common.Model
 {
-    class SettingViewModel
+    public class TimeTable
     {
     }
 }

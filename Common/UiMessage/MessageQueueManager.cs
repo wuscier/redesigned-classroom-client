@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Common.CustomControl;
 
-namespace Common.Message
+namespace Common.UiMessage
 {
     public class MessageQueueManager
     {

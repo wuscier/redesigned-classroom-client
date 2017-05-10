@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using Common.Message;
+using Common.UiMessage;
 using Prism.Mvvm;
 
 namespace Common.CustomControl

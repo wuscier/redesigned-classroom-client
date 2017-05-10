@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Message
+namespace Common.Model
 {
-    public enum MessageType
+    public class Course
     {
-        Info,
-        Warning,
-        Error
     }
 }

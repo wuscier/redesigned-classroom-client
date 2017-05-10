@@ -1,5 +1,14 @@
-﻿using System.Windows;
-using Common.Message;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Security.Policy;
+using System.Windows;
+using Autofac;
+using Autofac.Core;
+using Common.UiMessage;
 
 namespace Classroom
 {
@@ -12,20 +21,18 @@ namespace Classroom
         {
             base.OnStartup(e);
 
+            RegisterModuleComponents();
+        }
 
-            MessageQueueManager.Instance.AddInfo("INFO");
+        private void RegisterModuleComponents()
+        {
+            var builder = new ContainerBuilder();
 
+            var modulePath = Path.Combine(Environment.CurrentDirectory, "Modules");
 
+            var modules = Directory.GetFiles(modulePath, "*.dll").Select(Assembly.LoadFile).ToArray();
 
-            //MessageQueueManager.Instance.AddWarning("WARNING");
-            //MessageQueueManager.Instance.AddError("ERROR");
-
-            //Thread.Sleep(4000);
-
-            //MessageQueueManager.Instance.AddInfo("INFO");
-            //MessageQueueManager.Instance.AddWarning("WARNING");
-            //MessageQueueManager.Instance.AddError("ERROR");
-
+            builder.RegisterAssemblyModules(modules);
         }
     }
 }
