@@ -11,20 +11,30 @@ namespace Classroom.ViewModel
     {
         public LoginViewModel()
         {
-            LoginingCommand = new DelegateCommand(Logining);
+            LoginingCommand = DelegateCommand.FromAsyncHandler(LoginingAsync);
         }
 
-        private async void Logining()
+        private async Task LoginingAsync()
         {
+
             await GetClassroom();
         }
 
         private async Task GetClassroom()
         {
-            IBms bmsService = DependencyResolver.Current.GetService<IBms>();
-            Common.Model.Classroom classroom = await bmsService.GetClassroomAsync("BOX408D5CAF922E");
+            try
+            {
+                IBms bmsService = DependencyResolver.Current.GetService<IBms>();
+                Common.Model.Classroom classroom = await bmsService.GetClassroomAsync("BOX408D5CAF922E");
 
-            Console.WriteLine(classroom);
+                Console.WriteLine(classroom);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
 

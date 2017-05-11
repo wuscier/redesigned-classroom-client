@@ -31,42 +31,42 @@ namespace Service
 
         public Task<List<Classroom>> GetClassroomsAsync()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<TimeTable> GetClassTableInfoAsync(string classroomId)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> GetLogoAsync()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> RegisterLiveStreamAsync(CourseLiveStream courseLiveStream)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> SendLiveStreamStatusAsync()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> StartServerRecordAsync(Course course)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> StopServerRecordAsync(Course course)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<BmsMessage> UpdateMeetingIdOfCourseAsync(Course course)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         private async Task<BmsMessage> Request(string requestUrl, HttpContent content = null)
