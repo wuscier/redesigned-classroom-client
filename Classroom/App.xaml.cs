@@ -30,9 +30,23 @@ namespace Classroom
 
             var modulePath = Path.Combine(Environment.CurrentDirectory, "Modules");
 
-            var modules = Directory.GetFiles(modulePath, "*.dll").Select(Assembly.LoadFile).ToArray();
+            var assemblies = Directory.GetFiles(modulePath, "*.dll").Select(Assembly.LoadFile);
 
-            builder.RegisterAssemblyModules(modules);
+            //var assemblyNames = Directory.GetFiles(modulePath, "*.dll");
+
+            //List<Assembly> assemblies = new List<Assembly>();
+
+            //foreach (var assemblyName in assemblyNames)
+            //{
+            //    Assembly loadedAssembly = AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(assemblyName));
+            //    assemblies.Add(loadedAssembly);
+            //}
+
+
+            builder.RegisterAssemblyModules(assemblies.ToArray());
+
+
+            builder.Build();
         }
     }
 }

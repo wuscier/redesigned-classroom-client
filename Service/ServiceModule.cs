@@ -16,6 +16,8 @@ namespace Service
             Console.WriteLine("Register ServiceModule Components");
 
             builder.RegisterType<ClassroomBms>().As<IBms>().SingleInstance();
+
+
         }
     }
 }
