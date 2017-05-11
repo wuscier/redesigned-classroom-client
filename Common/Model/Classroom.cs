@@ -8,6 +8,8 @@ namespace Common.Model
 {
     public class Classroom
     {
+        public static Classroom NullClassroom => new Classroom();
+
         public string Id { get; set; }
         public string SchoolRoomNum { get; set; }
         public string SchoolRoomImei { get; set; }

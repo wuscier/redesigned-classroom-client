@@ -8,6 +8,9 @@ using System.Security.Policy;
 using System.Windows;
 using Autofac;
 using Autofac.Core;
+using Autofac.Features.ResolveAnything;
+using Classroom.View;
+using Common.Helper;
 using Common.UiMessage;
 
 namespace Classroom
@@ -22,31 +25,25 @@ namespace Classroom
             base.OnStartup(e);
 
             RegisterModuleComponents();
+
+            LoginView loginView = DependencyResolver.Current.GetService<LoginView>();
+            loginView.Show();
         }
 
         private void RegisterModuleComponents()
         {
             var builder = new ContainerBuilder();
 
+            // Make sure any not specifically registered concrete type can resolve.
+            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
+
             var modulePath = Path.Combine(Environment.CurrentDirectory, "Modules");
-
             var assemblies = Directory.GetFiles(modulePath, "*.dll").Select(Assembly.LoadFile);
-
-            //var assemblyNames = Directory.GetFiles(modulePath, "*.dll");
-
-            //List<Assembly> assemblies = new List<Assembly>();
-
-            //foreach (var assemblyName in assemblyNames)
-            //{
-            //    Assembly loadedAssembly = AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(assemblyName));
-            //    assemblies.Add(loadedAssembly);
-            //}
-
 
             builder.RegisterAssemblyModules(assemblies.ToArray());
 
-
-            builder.Build();
+            IContainer container = builder.Build();
+            DependencyResolver.SetContainer(container);
         }
     }
 }

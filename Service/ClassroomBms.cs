@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Autofac;
 using Common.Contract;
 using Common.Helper;
 using Common.Model;
@@ -14,9 +13,20 @@ namespace Service
     {
 
 
-        public Task<Classroom> GetClassroomAsync(string imei)
+        public async Task<Classroom> GetClassroomAsync(string imei)
         {
-            throw new NotImplementedException();
+            string requestUrl = $@"SupperSchool/AuthenticationClassRoom?classRoomImei={imei}";
+
+            BmsMessage bmsMessage = await Request(requestUrl);
+
+            if (bmsMessage.Status == "-1" || bmsMessage.Data == null)
+            {
+                return Classroom.NullClassroom;
+            }
+
+            Classroom classroom = JsonConvert.DeserializeObject<Classroom>(bmsMessage.Data.ToString());
+
+            return classroom;
         }
 
         public Task<List<Classroom>> GetClassroomsAsync()
