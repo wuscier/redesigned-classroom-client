@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Common.Contract;
+using Common.CustomControl;
 using Common.Helper;
 using Prism.Commands;
 
@@ -16,7 +17,6 @@ namespace Classroom.ViewModel
 
         private async Task LoginingAsync()
         {
-
             await GetClassroom();
         }
 
@@ -33,7 +33,12 @@ namespace Classroom.ViewModel
                 }
                 else
                 {
-                    Console.WriteLine(bmsMessage.Data);
+                    Dialog dd = new Dialog("tes","yes","no");
+                    dd.ShowDialog();
+
+                    Common.Model.Classroom classroom = bmsMessage.Data as Common.Model.Classroom;
+                    Dialog d = new Dialog(classroom.SchoolRoomImei);
+                    d.ShowDialog();
                 }
             }
             catch (Exception ex)

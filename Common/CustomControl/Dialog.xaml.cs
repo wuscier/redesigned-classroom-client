@@ -21,6 +21,13 @@ namespace Common.CustomControl
             YesButton.Focus();
         }
 
+        public Dialog(string message) : this()
+        {
+            MessageTextBlock.Text = message;
+
+            ButtonStackPanel.Visibility = Visibility.Collapsed;
+        }
+
         private void ChoiceButton_OnClick(object sender, RoutedEventArgs e)
         {
             FrameworkElement feSource = e.Source as FrameworkElement;

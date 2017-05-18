@@ -16,8 +16,8 @@
     
     <Grid Button.Click="ChoiceButton_OnClick">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -42,38 +42,46 @@
 
         </TextBlock>
         
-        <Button x:Name="YesButton" Grid.Row="1" Grid.Column="0" Content="是" >
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Template" Value="{StaticResource ButtonControlTemplate}"></Setter>
-                    <Setter Property="BorderThickness" Value="2"></Setter>
-                    <Setter Property="Background" Value="White"></Setter>
-                    <Setter Property="Foreground" Value="{StaticResource ThemeBrush}"></Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="{StaticResource ThemeBrush}"></Setter>
-                            <Setter Property="Foreground" Value="White"></Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Button x:Name="NoButton" Grid.Row="1" Grid.Column="1" Content="否">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Template" Value="{StaticResource ButtonControlTemplate}"></Setter>
-                    <Setter Property="Background" Value="{StaticResource NegativeChoiceLight}"></Setter>
-                    <Setter Property="Foreground" Value="{StaticResource NegativeChoiceDeep}"></Setter>
-                    <Setter Property="BorderThickness" Value="0 2 2 2"></Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="{StaticResource NegativeChoiceDeep}"></Setter>
-                            <Setter Property="Foreground" Value="White"></Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+        <StackPanel x:Name="ButtonStackPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button x:Name="YesButton" Content="是" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template" Value="{StaticResource ButtonControlTemplate}"></Setter>
+                        <Setter Property="BorderThickness" Value="2"></Setter>
+                        <Setter Property="Background" Value="White"></Setter>
+                        <Setter Property="Foreground" Value="{StaticResource ThemeBrush}"></Setter>
+                        <Setter Property="Width" Value="400"></Setter>
+                        <Setter Property="Height" Value="120"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="{StaticResource ThemeBrush}"></Setter>
+                                <Setter Property="Foreground" Value="White"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="NoButton" Content="否">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template" Value="{StaticResource ButtonControlTemplate}"></Setter>
+                        <Setter Property="Background" Value="{StaticResource NegativeChoiceLight}"></Setter>
+                        <Setter Property="Foreground" Value="{StaticResource NegativeChoiceDeep}"></Setter>
+                        <Setter Property="BorderThickness" Value="0 2 2 2"></Setter>
+                        <Setter Property="Width" Value="400"></Setter>
+                        <Setter Property="Height" Value="120"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="{StaticResource NegativeChoiceDeep}"></Setter>
+                                <Setter Property="Foreground" Value="White"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackPanel>
+        
     </Grid>
 </customControl:BaseWindow>
 
