@@ -111,6 +111,14 @@
       <Project>{a9aa7da5-db45-4e02-af48-70403b677eec}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MeetingSdk\MeetingSdk.csproj">
+      <Project>{a8e83c33-f20d-4d22-9140-70661cde9eac}</Project>
+      <Name>MeetingSdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{b898e4b0-d3ec-4ade-8c6c-5aeafb7eb1f0}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

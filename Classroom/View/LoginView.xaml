@@ -10,6 +10,7 @@
                           Height="768"
                           Width="1024"
                           Background="{StaticResource ThemeBrush}"
+                          IsSubWindow="True"
                           >
 
     <i:Interaction.Triggers>

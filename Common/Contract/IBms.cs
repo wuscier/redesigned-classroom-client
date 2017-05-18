@@ -9,7 +9,7 @@ namespace Common.Contract
     {
         Task<BmsMessage> GetLogoAsync();
         Task<List<Classroom>> GetClassroomsAsync();
-        Task<Classroom> GetClassroomAsync(string imei);
+        Task<BmsMessage> GetClassroomAsync(string imei);
         Task<TimeTable> GetClassTableInfoAsync(string classroomId);
         Task<BmsMessage> UpdateMeetingIdOfCourseAsync(Course course);
         Task<BmsMessage> StartServerRecordAsync(Course course);

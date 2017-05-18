@@ -25,10 +25,16 @@ namespace Classroom.ViewModel
             try
             {
                 IBms bmsService = DependencyResolver.Current.GetService<IBms>();
-                Common.Model.Classroom classroom = await bmsService.GetClassroomAsync("BOX408D5CAF922E");
+                BmsMessage bmsMessage = await bmsService.GetClassroomAsync("BOX408D5CAF922E");
 
-                Console.WriteLine(classroom);
-
+                if (bmsMessage.HasError)
+                {
+                    //
+                }
+                else
+                {
+                    Console.WriteLine(bmsMessage.Data);
+                }
             }
             catch (Exception ex)
             {

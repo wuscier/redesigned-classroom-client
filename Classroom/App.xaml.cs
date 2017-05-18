@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Security.Policy;
-using System.Windows;
+﻿using System.Windows;
 using Autofac;
-using Autofac.Core;
 using Autofac.Features.ResolveAnything;
 using Classroom.View;
 using Common.Helper;
-using Common.UiMessage;
+using MeetingSdk;
+using Service;
 
 namespace Classroom
 {
@@ -37,10 +30,8 @@ namespace Classroom
             // Make sure any not specifically registered concrete type can resolve.
             builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
-            var modulePath = Path.Combine(Environment.CurrentDirectory, "Modules");
-            var assemblies = Directory.GetFiles(modulePath, "*.dll").Select(Assembly.LoadFile);
-
-            builder.RegisterAssemblyModules(assemblies.ToArray());
+            builder.RegisterModule(new MeetingSdkModule());
+            builder.RegisterModule(new ServiceModule());
 
             IContainer container = builder.Build();
             DependencyResolver.SetContainer(container);

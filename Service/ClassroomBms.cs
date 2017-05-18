@@ -6,6 +6,7 @@ using Common.Contract;
 using Common.Helper;
 using Common.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Service
 {
@@ -13,20 +14,23 @@ namespace Service
     {
 
 
-        public async Task<Classroom> GetClassroomAsync(string imei)
+        public async Task<BmsMessage> GetClassroomAsync(string imei)
         {
             string requestUrl = $@"SupperSchool/AuthenticationClassRoom?classRoomImei={imei}";
 
             BmsMessage bmsMessage = await Request(requestUrl);
 
-            if (bmsMessage.Status == "-1" || bmsMessage.Data == null)
+            if (!bmsMessage.HasError)
             {
-                return Classroom.NullClassroom;
+                JObject jObject = JObject.Parse(bmsMessage.Data.ToString());
+                string sClassroom = jObject.SelectToken("classroom").ToString();
+
+                Classroom classroom = JsonConvert.DeserializeObject<Classroom>(sClassroom);
+
+                bmsMessage.Data = classroom;
             }
 
-            Classroom classroom = JsonConvert.DeserializeObject<Classroom>(bmsMessage.Data.ToString());
-
-            return classroom;
+            return bmsMessage;
         }
 
         public Task<List<Classroom>> GetClassroomsAsync()
@@ -73,7 +77,7 @@ namespace Service
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("114.112.74.10:81");
+                httpClient.BaseAddress = new Uri("http://114.112.74.10:81");
 
                 HttpResponseMessage response;
                 BmsMessage bmsMessage;
@@ -86,26 +90,34 @@ namespace Service
                 }
                 catch (Exception ex)
                 {
-                    return new BmsMessage()
-                    {
-                        Status = "-1",
-                        Message = ex.Message
-                    };
+                    bmsMessage = BmsMessage.GenerateError(ex.Message);
+                    return bmsMessage;
                 }
+
 
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadAsStringAsync();
 
-                    bmsMessage = JsonConvert.DeserializeObject<BmsMessage>(result);
+
+                    JObject jObject = JObject.Parse(result);
+                    string status = jObject.SelectToken("status").ToString();
+                    string message = jObject.SelectToken("message").ToString();
+
+                    if (status != "0")
+                    {
+                        bmsMessage = BmsMessage.GenerateError(message, status);
+                    }
+                    else
+                    {
+                        bmsMessage = BmsMessage.GenerateNormal(result);
+                    }
                 }
                 else
                 {
-                    bmsMessage = new BmsMessage()
-                    {
-                        Status = response.StatusCode.ToString(),
-                        Message = response.ReasonPhrase
-                    };
+
+                    bmsMessage = BmsMessage.GenerateError(response.ReasonPhrase,
+                        response.StatusCode.ToString());
                 }
 
                 return bmsMessage;
